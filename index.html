@@ -1,0 +1,1214 @@
+<!DOCTYPE html>
+<html lang="vi" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vũ Kim Ngọc | Data Analyst & Economic Researcher Portfolio</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        burgundy: {
+                            950: '#080507',
+                            900: '#0f090c',
+                            850: '#140c10',
+                            800: '#180f14',
+                            700: '#261720',
+                            600: '#38202d',
+                        },
+                        rosegold: {
+                            100: '#f7ebe1',
+                            200: '#ebd1bd',
+                            300: '#e0b589',
+                            400: '#d59b73',
+                            500: '#c98a68',
+                            600: '#a6684a',
+                        }
+                    },
+                    fontFamily: {
+                        serif: ['"Cormorant Garamond"', 'Georgia', 'serif'],
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                    },
+                    backgroundImage: {
+                        'radial-glow': 'radial-gradient(circle at center, rgba(224, 181, 137, 0.12) 0%, transparent 70%)',
+                        'editorial-gradient': 'linear-gradient(135deg, rgba(24, 15, 20, 0.95) 0%, rgba(15, 9, 12, 0.98) 100%)',
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0f090c;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #261720;
+            border-radius: 4px;
+            border: 1px solid rgba(224, 181, 137, 0.2);
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #c98a68;
+        }
+
+        /* Subtle Gold Shimmer Animation */
+        @keyframes goldShimmer {
+            0% { background-position: -200% 0; }
+            100% { background-position: 200% 0; }
+        }
+        .text-gold-gradient {
+            background: linear-gradient(135deg, #F7EBE1 0%, #E0B589 50%, #C98A68 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .text-gold-accent {
+            background: linear-gradient(90deg, #E0B589, #F7EBE1, #C98A68);
+            background-size: 200% auto;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: goldShimmer 6s infinite linear;
+        }
+
+        /* Glassmorphism Cards */
+        .glass-card {
+            background: rgba(24, 15, 20, 0.65);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(224, 181, 137, 0.12);
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .glass-card:hover {
+            border-color: rgba(224, 181, 137, 0.35);
+            transform: translateY(-4px);
+            box-shadow: 0 12px 30px -10px rgba(0, 0, 0, 0.7), 0 0 20px 0 rgba(224, 181, 137, 0.08);
+        }
+
+        /* Image Frame Vignette */
+        .editorial-frame {
+            position: relative;
+        }
+        .editorial-frame::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border: 1px solid rgba(224, 181, 137, 0.25);
+            pointer-events: none;
+            margin: -8px;
+            transition: all 0.4s ease;
+        }
+        .editorial-frame:hover::after {
+            margin: -12px;
+            border-color: rgba(224, 181, 137, 0.6);
+        }
+
+        /* Custom Accordion transition */
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease-out, opacity 0.3s ease;
+            opacity: 0;
+        }
+        .accordion-content.open {
+            max-height: 600px;
+            opacity: 1;
+        }
+    </style>
+</head>
+<body class="bg-burgundy-900 text-[#f4eae1] font-sans selection:bg-rosegold-500 selection:text-burgundy-950 overflow-x-hidden antialiased">
+
+    <!-- Sticky Glass Navigation Bar -->
+    <header id="navbar" class="fixed top-0 left-0 w-full z-50 transition-all duration-300 border-b border-transparent py-5">
+        <div class="max-w-7xl mx-auto px-6 md:px-12 flex items-center justify-between">
+            <!-- Brand Logo -->
+            <a href="#" class="group flex items-center gap-3">
+                <span class="w-10 h-10 rounded-full border border-rosegold-300/30 flex items-center justify-center font-serif text-xl font-bold text-rosegold-300 group-hover:border-rosegold-300 transition-colors">
+                    VKN
+                </span>
+                <div class="flex flex-col">
+                    <span class="font-serif text-lg tracking-wider font-semibold text-rosegold-100 uppercase group-hover:text-rosegold-300 transition-colors">Vũ Kim Ngọc</span>
+                    <span class="text-[10px] tracking-widest text-rosegold-300/70 uppercase">Data Analyst & Researcher</span>
+                </div>
+            </a>
+
+            <!-- Desktop Nav Links -->
+            <nav class="hidden md:flex items-center space-x-8 text-sm tracking-wider uppercase font-medium">
+                <a href="#about" class="text-rosegold-100/70 hover:text-rosegold-300 transition-colors py-1 relative after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[1px] after:bg-rosegold-300 hover:after:w-full after:transition-all">Giới thiệu</a>
+                <a href="#education" class="text-rosegold-100/70 hover:text-rosegold-300 transition-colors py-1 relative after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[1px] after:bg-rosegold-300 hover:after:w-full after:transition-all">Học vấn</a>
+                <a href="#skills" class="text-rosegold-100/70 hover:text-rosegold-300 transition-colors py-1 relative after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[1px] after:bg-rosegold-300 hover:after:w-full after:transition-all">Kỹ năng</a>
+                <a href="#projects" class="text-rosegold-100/70 hover:text-rosegold-300 transition-colors py-1 relative after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[1px] after:bg-rosegold-300 hover:after:w-full after:transition-all">Dự án</a>
+                <a href="#experience" class="text-rosegold-100/70 hover:text-rosegold-300 transition-colors py-1 relative after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[1px] after:bg-rosegold-300 hover:after:w-full after:transition-all">Kinh nghiệm</a>
+                <a href="#activities" class="text-rosegold-100/70 hover:text-rosegold-300 transition-colors py-1 relative after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[1px] after:bg-rosegold-300 hover:after:w-full after:transition-all">Hoạt động</a>
+            </nav>
+
+            <!-- CTA Header Button -->
+            <div class="hidden md:block">
+                <a href="#contact" class="px-5 py-2.5 text-xs font-semibold uppercase tracking-widest text-burgundy-950 bg-gradient-to-r from-rosegold-300 to-rosegold-500 rounded-sm hover:shadow-[0_0_20px_rgba(224,181,137,0.4)] transition-all transform hover:-translate-y-0.5">
+                    Liên hệ ngay
+                </a>
+            </div>
+
+            <!-- Mobile Menu Toggle -->
+            <button id="mobile-menu-btn" class="md:hidden text-rosegold-300 p-2 focus:outline-none" aria-label="Toggle Navigation">
+                <i class="fa-solid fa-bars text-xl"></i>
+            </button>
+        </div>
+
+        <!-- Mobile Drawer Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-burgundy-950/95 border-b border-rosegold-300/20 backdrop-blur-xl px-6 py-6 transition-all">
+            <nav class="flex flex-col space-y-4 text-sm uppercase tracking-wider">
+                <a href="#about" class="text-rosegold-100/80 hover:text-rosegold-300 py-2 border-b border-burgundy-800">Giới thiệu</a>
+                <a href="#education" class="text-rosegold-100/80 hover:text-rosegold-300 py-2 border-b border-burgundy-800">Học vấn & Bảng điểm</a>
+                <a href="#skills" class="text-rosegold-100/80 hover:text-rosegold-300 py-2 border-b border-burgundy-800">Kỹ năng & Công cụ</a>
+                <a href="#projects" class="text-rosegold-100/80 hover:text-rosegold-300 py-2 border-b border-burgundy-800">Dự án Nghiên cứu</a>
+                <a href="#experience" class="text-rosegold-100/80 hover:text-rosegold-300 py-2 border-b border-burgundy-800">Kinh nghiệm</a>
+                <a href="#activities" class="text-rosegold-100/80 hover:text-rosegold-300 py-2 border-b border-burgundy-800">Hoạt động Ngoại giao</a>
+                <a href="#contact" class="mt-2 text-center py-3 text-xs font-semibold uppercase tracking-widest text-burgundy-950 bg-rosegold-300 rounded-sm">Liên hệ trực tiếp</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="relative min-h-screen pt-32 pb-20 flex items-center justify-center overflow-hidden">
+        <!-- Radial Decorative Glow Backgrounds -->
+        <div class="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-radial-glow pointer-events-none opacity-60"></div>
+        <div class="absolute -bottom-20 -right-20 w-[400px] h-[400px] bg-rosegold-500/5 rounded-full blur-3xl pointer-events-none"></div>
+
+        <div class="max-w-7xl mx-auto px-6 md:px-12 w-full relative z-10">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
+                
+                <!-- Left Column: Editorial Headline & Intro -->
+                <div class="lg:col-span-7 flex flex-col items-start space-y-6">
+                    <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-rosegold-300/30 bg-burgundy-800/50 backdrop-blur-md">
+                        <span class="w-2 h-2 rounded-full bg-rosegold-300 animate-pulse"></span>
+                        <span class="text-xs uppercase tracking-widest text-rosegold-300 font-medium">Foreign Trade University (FTU)</span>
+                    </div>
+
+                    <h1 class="font-serif text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-light tracking-tight leading-[1.1]">
+                        DATA ANALYST & <br>
+                        <span class="font-italic text-gold-gradient font-normal italic">ECONOMIC RESEARCHER</span>
+                    </h1>
+
+                    <p class="text-xl md:text-2xl font-serif text-rosegold-200/90 font-light tracking-wide">
+                        Vũ Kim Ngọc — <span class="text-rosegold-300">Cử nhân Kinh tế Quốc tế</span>
+                    </p>
+
+                    <p class="text-sm md:text-base text-rosegold-100/70 max-w-2xl leading-relaxed font-light">
+                        Nắm vững nền tảng kinh tế định lượng, phân tích tài chính và xử lý dữ liệu chuỗi thời gian/dữ liệu bảng (Panel Data). Thành thạo Stata, Python & Excel trong việc khai thác các tập dữ liệu vĩ mô từ World Bank, UN Comtrade & Trade Map.
+                    </p>
+
+                    <!-- CTAs -->
+                    <div class="flex flex-wrap items-center gap-4 pt-4">
+                        <a href="#projects" class="px-7 py-3.5 text-xs uppercase tracking-widest font-semibold text-burgundy-950 bg-gradient-to-r from-rosegold-300 via-rosegold-400 to-rosegold-500 rounded-sm hover:shadow-[0_0_25px_rgba(224,181,137,0.4)] transition-all flex items-center gap-3">
+                            <span>Khám phá Dự án</span>
+                            <i class="fa-solid fa-arrow-right-long text-sm"></i>
+                        </a>
+                        <a href="#contact" class="px-7 py-3.5 text-xs uppercase tracking-widest font-semibold text-rosegold-300 border border-rosegold-300/40 rounded-sm hover:bg-rosegold-300/10 hover:border-rosegold-300 transition-all flex items-center gap-2">
+                            <i class="fa-regular fa-paper-plane text-xs"></i>
+                            <span>Liên hệ công việc</span>
+                        </a>
+                    </div>
+
+                    <!-- Key Stats Bar -->
+                    <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 w-full pt-8 border-t border-rosegold-300/15">
+                        <div class="glass-card p-4 rounded-sm border border-rosegold-300/10">
+                            <div class="font-serif text-3xl font-bold text-rosegold-300">3.6<span class="text-sm text-rosegold-100/60 font-sans font-normal">/4.0</span></div>
+                            <div class="text-[11px] uppercase tracking-wider text-rosegold-100/60 mt-1">GPA FTU</div>
+                        </div>
+                        <div class="glass-card p-4 rounded-sm border border-rosegold-300/10">
+                            <div class="font-serif text-3xl font-bold text-rosegold-300">6.5</div>
+                            <div class="text-[11px] uppercase tracking-wider text-rosegold-100/60 mt-1">IELTS Overall</div>
+                        </div>
+                        <div class="glass-card p-4 rounded-sm border border-rosegold-300/10">
+                            <div class="font-serif text-3xl font-bold text-rosegold-300">3+</div>
+                            <div class="text-[11px] uppercase tracking-wider text-rosegold-100/60 mt-1">Dự án Nghiên cứu</div>
+                        </div>
+                        <div class="glass-card p-4 rounded-sm border border-rosegold-300/10">
+                            <div class="font-serif text-3xl font-bold text-rosegold-300">HSKK</div>
+                            <div class="text-[11px] uppercase tracking-wider text-rosegold-100/60 mt-1">Trung cấp</div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- Right Column: High-end Portrait Frame -->
+                <div class="lg:col-span-5 flex justify-center lg:justify-end">
+                    <div class="relative max-w-sm w-full">
+                        <!-- Background glow effect -->
+                        <div class="absolute inset-0 bg-gradient-to-tr from-rosegold-500/20 to-transparent blur-2xl rounded-full transform scale-95"></div>
+                        
+                        <!-- Portrait Box with Gold Trim -->
+                        <div class="editorial-frame relative bg-burgundy-850 p-3 rounded-sm border border-rosegold-300/30">
+                            <div class="relative overflow-hidden aspect-[3/4] rounded-sm group cursor-pointer" onclick="openLightbox('ảnh thẻ.jpg', 'Vũ Kim Ngọc - Chân dung cá nhân')">
+                                <img src="ảnh thẻ.jpg" alt="Vũ Kim Ngọc" class="w-full h-full object-cover object-center transform group-hover:scale-105 transition-transform duration-700 filter brightness-95 contrast-105" onerror="this.onerror=null; this.src='https://placehold.co/600x800/180f14/e0b589?text=Vu+Kim+Ngoc';">
+                                
+                                <div class="absolute inset-0 bg-gradient-to-t from-burgundy-950/90 via-transparent to-transparent opacity-80 group-hover:opacity-40 transition-opacity"></div>
+                                
+                                <!-- Floating Overlay Label -->
+                                <div class="absolute bottom-4 left-4 right-4 p-3 glass-card rounded-sm border border-rosegold-300/20 flex items-center justify-between">
+                                    <div>
+                                        <p class="text-xs font-serif font-semibold text-rosegold-100">Vũ Kim Ngọc</p>
+                                        <p class="text-[10px] text-rosegold-300/80">FTU Student & Researcher</p>
+                                    </div>
+                                    <span class="w-7 h-7 rounded-full bg-rosegold-300/20 flex items-center justify-center text-rosegold-300 text-xs">
+                                        <i class="fa-solid fa-expand"></i>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Sub-decor Badge -->
+                        <div class="absolute -bottom-6 -left-6 glass-card p-4 rounded-sm border border-rosegold-300/30 hidden sm:flex items-center gap-3">
+                            <div class="w-10 h-10 rounded-full bg-rosegold-500/20 flex items-center justify-center text-rosegold-300">
+                                <i class="fa-solid fa-chart-line text-lg"></i>
+                            </div>
+                            <div>
+                                <p class="text-xs font-semibold text-rosegold-100">Panel Data & Stata</p>
+                                <p class="text-[10px] text-rosegold-100/60">Kinh tế lượng vĩ mô</p>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- About Me Section -->
+    <section id="about" class="py-24 bg-burgundy-950 border-t border-b border-rosegold-300/10 relative">
+        <div class="max-w-7xl mx-auto px-6 md:px-12">
+            
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                
+                <!-- Title & Philosophy -->
+                <div class="lg:col-span-5">
+                    <span class="text-xs font-semibold uppercase tracking-widest text-rosegold-300 mb-2 block">// TÓM TẮT HỒ SƠ</span>
+                    <h2 class="font-serif text-3xl sm:text-4xl md:text-5xl font-light leading-tight text-rosegold-100">
+                        Tư duy định lượng kết hợp <span class="italic text-gold-gradient font-normal">Thương mại thực tế</span>
+                    </h2>
+                    <div class="w-16 h-[2px] bg-gradient-to-r from-rosegold-300 to-transparent my-6"></div>
+                    <p class="text-sm text-rosegold-100/70 leading-relaxed font-light mb-6">
+                        Là sinh viên năm 3 chuyên ngành Kinh tế và Phát triển Quốc tế tại Đại học Ngoại thương (FTU), tôi định hình con đường sự nghiệp xoay quanh khả năng biến các tập dữ liệu vĩ mô phức tạp thành các phân tích có giá trị thực tiễn.
+                    </p>
+                    <p class="text-sm text-rosegold-100/70 leading-relaxed font-light">
+                        Sự kết hợp giữa tư duy kinh tế học chặt chẽ, kỹ năng kiểm định mô hình định lượng (Stata, Python, Excel) và trải nghiệm giao tiếp thương mại cho phép tôi tiếp cận bài toán phân tích từ cả góc độ dữ liệu thô lẫn góc nhìn chiến lược kinh doanh.
+                    </p>
+                </div>
+
+                <!-- 3 Pillars Grid -->
+                <div class="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-6">
+                    
+                    <div class="glass-card p-6 rounded-sm border border-rosegold-300/15">
+                        <div class="w-12 h-12 rounded-sm bg-rosegold-300/10 flex items-center justify-center text-rosegold-300 text-xl mb-4 border border-rosegold-300/20">
+                            <i class="fa-solid fa-magnifying-glass-chart"></i>
+                        </div>
+                        <h3 class="font-serif text-xl text-rosegold-100 font-medium mb-2">Phân tích Định lượng</h3>
+                        <p class="text-xs text-rosegold-100/60 leading-relaxed">
+                            Xử lý dữ liệu bảng (Panel Data), mô hình chuỗi thời gian, kiểm định Hausman, FEM/REM nhằm đánh giá chính xác tác động kinh tế vĩ mô.
+                        </p>
+                    </div>
+
+                    <div class="glass-card p-6 rounded-sm border border-rosegold-300/15">
+                        <div class="w-12 h-12 rounded-sm bg-rosegold-300/10 flex items-center justify-center text-rosegold-300 text-xl mb-4 border border-rosegold-300/20">
+                            <i class="fa-solid fa-globe"></i>
+                        </div>
+                        <h3 class="font-serif text-xl text-rosegold-100 font-medium mb-2">Dữ liệu Thương mại</h3>
+                        <p class="text-xs text-rosegold-100/60 leading-relaxed">
+                            Khai thác và làm sạch tập dữ liệu lớn từ World Bank Data, UN Comtrade và Trade Map để dự báo xu hướng xuất nhập khẩu.
+                        </p>
+                    </div>
+
+                    <div class="glass-card p-6 rounded-sm border border-rosegold-300/15">
+                        <div class="w-12 h-12 rounded-sm bg-rosegold-300/10 flex items-center justify-center text-rosegold-300 text-xl mb-4 border border-rosegold-300/20">
+                            <i class="fa-solid fa-people-group"></i>
+                        </div>
+                        <h3 class="font-serif text-xl text-rosegold-100 font-medium mb-2">Lãnh đạo Dự án</h3>
+                        <p class="text-xs text-rosegold-100/60 leading-relaxed">
+                            Từng đảm nhiệm vai trò trưởng nhóm trong nhiều dự án nghiên cứu học thuật, quản lý tiến độ và trình bày kết quả chuyên nghiệp.
+                        </p>
+                    </div>
+
+                    <div class="glass-card p-6 rounded-sm border border-rosegold-300/15">
+                        <div class="w-12 h-12 rounded-sm bg-rosegold-300/10 flex items-center justify-center text-rosegold-300 text-xl mb-4 border border-rosegold-300/20">
+                            <i class="fa-solid fa-bullseye"></i>
+                        </div>
+                        <h3 class="font-serif text-xl text-rosegold-100 font-medium mb-2">Tư duy Thương mại</h3>
+                        <p class="text-xs text-rosegold-100/60 leading-relaxed">
+                            Trải nghiệm kinh doanh & CRM giúp thấu hiểu hành vi khách hàng, tối ưu hóa tỷ lệ chuyển đổi và quản lý dữ liệu bán hàng.
+                        </p>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Education & Transcript Showcase -->
+    <section id="education" class="py-24 relative overflow-hidden">
+        <div class="max-w-7xl mx-auto px-6 md:px-12">
+            
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span class="text-xs font-semibold uppercase tracking-widest text-rosegold-300 mb-2 block">// NỀN TẢNG HỌC VẤN</span>
+                <h2 class="font-serif text-3xl sm:text-4xl md:text-5xl font-light text-rosegold-100">
+                    Đại học Ngoại thương <span class="italic text-gold-gradient">(FTU)</span>
+                </h2>
+                <p class="text-xs sm:text-sm text-rosegold-100/60 mt-3">2024 – 2028 | Khoa Kinh tế Quốc tế — Chuyên ngành Kinh tế & Phát triển Quốc tế</p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
+                
+                <!-- Left: FTU Details & Coursework -->
+                <div class="lg:col-span-7 flex flex-col justify-between space-y-6">
+                    
+                    <div class="glass-card p-8 rounded-sm border border-rosegold-300/20 relative">
+                        <div class="flex flex-wrap items-center justify-between gap-4 border-b border-rosegold-300/15 pb-6 mb-6">
+                            <div>
+                                <h3 class="font-serif text-2xl text-rosegold-100 font-medium">Cử nhân Kinh tế Quốc tế</h3>
+                                <p class="text-xs text-rosegold-300 mt-1">Trường Đại học Ngoại Thương Hà Nội</p>
+                            </div>
+                            <div class="px-4 py-2 bg-rosegold-300/10 border border-rosegold-300/30 rounded-sm">
+                                <span class="text-xs uppercase text-rosegold-300 tracking-wider font-semibold block">GPA Tích lũy</span>
+                                <span class="font-serif text-2xl font-bold text-rosegold-100">3.60 / 4.0</span>
+                            </div>
+                        </div>
+
+                        <h4 class="text-xs uppercase tracking-widest text-rosegold-300 mb-4 font-semibold">Các học phần chuyên ngành tiêu biểu:</h4>
+                        
+                        <div class="grid grid-cols-2 sm:grid-cols-3 gap-3">
+                            <div class="px-3 py-2 bg-burgundy-900/80 border border-rosegold-300/10 rounded-sm text-xs text-rosegold-100/80 flex items-center gap-2">
+                                <i class="fa-solid fa-square-check text-rosegold-300 text-[10px]"></i>
+                                <span>Kinh tế lượng 1, 2</span>
+                            </div>
+                            <div class="px-3 py-2 bg-burgundy-900/80 border border-rosegold-300/10 rounded-sm text-xs text-rosegold-100/80 flex items-center gap-2">
+                                <i class="fa-solid fa-square-check text-rosegold-300 text-[10px]"></i>
+                                <span>Kinh tế học quốc tế 1, 2</span>
+                            </div>
+                            <div class="px-3 py-2 bg-burgundy-900/80 border border-rosegold-300/10 rounded-sm text-xs text-rosegold-100/80 flex items-center gap-2">
+                                <i class="fa-solid fa-square-check text-rosegold-300 text-[10px]"></i>
+                                <span>Kinh tế Vi mô 1, 2</span>
+                            </div>
+                            <div class="px-3 py-2 bg-burgundy-900/80 border border-rosegold-300/10 rounded-sm text-xs text-rosegold-100/80 flex items-center gap-2">
+                                <i class="fa-solid fa-square-check text-rosegold-300 text-[10px]"></i>
+                                <span>Kinh tế Vĩ mô 1, 2</span>
+                            </div>
+                            <div class="px-3 py-2 bg-burgundy-900/80 border border-rosegold-300/10 rounded-sm text-xs text-rosegold-100/80 flex items-center gap-2">
+                                <i class="fa-solid fa-square-check text-rosegold-300 text-[10px]"></i>
+                                <span>Tăng trưởng phát triển</span>
+                            </div>
+                            <div class="px-3 py-2 bg-burgundy-900/80 border border-rosegold-300/10 rounded-sm text-xs text-rosegold-100/80 flex items-center gap-2">
+                                <i class="fa-solid fa-square-check text-rosegold-300 text-[10px]"></i>
+                                <span>Thương mại phát triển</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Certifications Bar -->
+                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                        <div class="glass-card p-4 rounded-sm border border-rosegold-300/15 flex items-center gap-3">
+                            <div class="w-10 h-10 rounded-full bg-blue-500/10 text-blue-400 flex items-center justify-center text-lg shrink-0">
+                                <i class="fa-brands fa-google"></i>
+                            </div>
+                            <div>
+                                <h5 class="text-xs font-semibold text-rosegold-100">Google AI Essentials</h5>
+                                <p class="text-[10px] text-rosegold-100/60">Chứng chỉ Google</p>
+                            </div>
+                        </div>
+
+                        <div class="glass-card p-4 rounded-sm border border-rosegold-300/15 flex items-center gap-3">
+                            <div class="w-10 h-10 rounded-full bg-rosegold-300/10 text-rosegold-300 flex items-center justify-center text-lg shrink-0">
+                                <i class="fa-solid fa-language"></i>
+                            </div>
+                            <div>
+                                <h5 class="text-xs font-semibold text-rosegold-100">IELTS Overall 6.5</h5>
+                                <p class="text-[10px] text-rosegold-100/60">Tiếng Anh Học thuật</p>
+                            </div>
+                        </div>
+
+                        <div class="glass-card p-4 rounded-sm border border-rosegold-300/15 flex items-center gap-3">
+                            <div class="w-10 h-10 rounded-full bg-emerald-500/10 text-emerald-400 flex items-center justify-center text-lg shrink-0">
+                                <i class="fa-solid fa-book-open"></i>
+                            </div>
+                            <div>
+                                <h5 class="text-xs font-semibold text-rosegold-100">HSKK Trung cấp</h5>
+                                <p class="text-[10px] text-rosegold-100/60">Đang theo học</p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- Right: Academic Transcript Proof Image Card -->
+                <div class="lg:col-span-5 flex flex-col justify-center">
+                    <div class="glass-card p-5 rounded-sm border border-rosegold-300/25 relative group">
+                        <div class="flex items-center justify-between mb-3">
+                            <span class="text-xs uppercase tracking-widest text-rosegold-300 font-semibold flex items-center gap-2">
+                                <i class="fa-solid fa-file-invoice text-xs"></i>
+                                Minh chứng GPA Học kỳ
+                            </span>
+                            <span class="text-[11px] text-rosegold-100/50">FTU Portal</span>
+                        </div>
+
+                        <div class="relative rounded-sm overflow-hidden border border-rosegold-300/20 cursor-pointer" onclick="openLightbox('image_ae8f87.png', 'Bảng điểm minh chứng GPA 3.65 - Hệ 4')">
+                            <img src="image_ae8f87.png" alt="GPA Minh Chứng FTU" class="w-full h-auto object-cover transform group-hover:scale-105 transition-transform duration-500" onerror="this.onerror=null; this.src='https://placehold.co/600x300/180f14/e0b589?text=Minh+Chung+GPA+3.65';">
+                            <div class="absolute inset-0 bg-burgundy-950/40 group-hover:bg-transparent transition-colors flex items-center justify-center">
+                                <span class="px-4 py-2 glass-card rounded-sm text-xs font-semibold text-rosegold-300 border border-rosegold-300/40 shadow-lg flex items-center gap-2 transform translate-y-2 group-hover:translate-y-0 transition-transform">
+                                    <i class="fa-solid fa-magnifying-glass-plus"></i>
+                                    Phóng to Bảng điểm
+                                </span>
+                            </div>
+                        </div>
+
+                        <div class="mt-4 p-3 bg-burgundy-900/60 rounded-sm border border-rosegold-300/10 text-xs text-rosegold-100/70 space-y-1">
+                            <div class="flex justify-between"><span>Điểm TB Học kỳ (Hệ 4):</span> <span class="text-rosegold-300 font-bold">3.65</span></div>
+                            <div class="flex justify-between"><span>Điểm TB Học kỳ (Hệ 10):</span> <span class="text-rosegold-100 font-semibold">8.63</span></div>
+                            <div class="flex justify-between"><span>Số tín chỉ đạt:</span> <span class="text-rosegold-100">26 Tín chỉ</span></div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Skills & Toolkit Section -->
+    <section id="skills" class="py-24 bg-burgundy-950 border-t border-b border-rosegold-300/10 relative">
+        <div class="max-w-7xl mx-auto px-6 md:px-12">
+            
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span class="text-xs font-semibold uppercase tracking-widest text-rosegold-300 mb-2 block">// NĂNG LỰC & BỘ CÔNG CỤ</span>
+                <h2 class="font-serif text-3xl sm:text-4xl md:text-5xl font-light text-rosegold-100">
+                    Kỹ năng Chuyên môn <span class="italic text-gold-gradient">& Công cụ</span>
+                </h2>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                
+                <!-- Category 1: Quantitative & Data -->
+                <div class="glass-card p-8 rounded-sm border border-rosegold-300/15 flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center gap-3 mb-6 pb-4 border-b border-rosegold-300/15">
+                            <span class="w-10 h-10 rounded-sm bg-rosegold-300/10 border border-rosegold-300/30 flex items-center justify-center text-rosegold-300">
+                                <i class="fa-solid fa-chart-pie text-lg"></i>
+                            </span>
+                            <h3 class="font-serif text-2xl text-rosegold-100 font-medium">Phân tích & Định lượng</h3>
+                        </div>
+
+                        <ul class="space-y-4">
+                            <li class="space-y-1">
+                                <div class="flex justify-between text-xs font-medium">
+                                    <span class="text-rosegold-100">Phân tích Dữ liệu (Data Analysis)</span>
+                                    <span class="text-rosegold-300">Nâng cao</span>
+                                </div>
+                                <div class="w-full h-1.5 bg-burgundy-900 rounded-full overflow-hidden">
+                                    <div class="h-full bg-gradient-to-r from-rosegold-400 to-rosegold-300 w-[90%]"></div>
+                                </div>
+                            </li>
+                            <li class="space-y-1">
+                                <div class="flex justify-between text-xs font-medium">
+                                    <span class="text-rosegold-100">Kinh tế lượng & Panel Data</span>
+                                    <span class="text-rosegold-300">Thành thạo</span>
+                                </div>
+                                <div class="w-full h-1.5 bg-burgundy-900 rounded-full overflow-hidden">
+                                    <div class="h-full bg-gradient-to-r from-rosegold-400 to-rosegold-300 w-[88%]"></div>
+                                </div>
+                            </li>
+                            <li class="space-y-1">
+                                <div class="flex justify-between text-xs font-medium">
+                                    <span class="text-rosegold-100">Business Analysis & CRM</span>
+                                    <span class="text-rosegold-300">Thực chiến</span>
+                                </div>
+                                <div class="w-full h-1.5 bg-burgundy-900 rounded-full overflow-hidden">
+                                    <div class="h-full bg-gradient-to-r from-rosegold-400 to-rosegold-300 w-[82%]"></div>
+                                </div>
+                            </li>
+                            <li class="space-y-1">
+                                <div class="flex justify-between text-xs font-medium">
+                                    <span class="text-rosegold-100">Trực quan hóa Dữ liệu</span>
+                                    <span class="text-rosegold-300">Tốt</span>
+                                </div>
+                                <div class="w-full h-1.5 bg-burgundy-900 rounded-full overflow-hidden">
+                                    <div class="h-full bg-gradient-to-r from-rosegold-400 to-rosegold-300 w-[85%]"></div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Category 2: Software & Tech Stack -->
+                <div class="glass-card p-8 rounded-sm border border-rosegold-300/15 flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center gap-3 mb-6 pb-4 border-b border-rosegold-300/15">
+                            <span class="w-10 h-10 rounded-sm bg-rosegold-300/10 border border-rosegold-300/30 flex items-center justify-center text-rosegold-300">
+                                <i class="fa-solid fa-code text-lg"></i>
+                            </span>
+                            <h3 class="font-serif text-2xl text-rosegold-100 font-medium">Công cụ Kỹ thuật</h3>
+                        </div>
+
+                        <div class="grid grid-cols-2 gap-3">
+                            <div class="p-3 bg-burgundy-900/90 border border-rosegold-300/10 rounded-sm text-center">
+                                <i class="fa-solid fa-database text-2xl text-rosegold-300 mb-2 block"></i>
+                                <span class="text-xs font-semibold text-rosegold-100 block">Stata</span>
+                                <span class="text-[10px] text-rosegold-100/50">Kinh tế lượng vĩ mô</span>
+                            </div>
+
+                            <div class="p-3 bg-burgundy-900/90 border border-rosegold-300/10 rounded-sm text-center">
+                                <i class="fa-brands fa-python text-2xl text-rosegold-300 mb-2 block"></i>
+                                <span class="text-xs font-semibold text-rosegold-100 block">Python</span>
+                                <span class="text-[10px] text-rosegold-100/50">Pandas / Data Prep</span>
+                            </div>
+
+                            <div class="p-3 bg-burgundy-900/90 border border-rosegold-300/10 rounded-sm text-center">
+                                <i class="fa-solid fa-file-excel text-2xl text-rosegold-300 mb-2 block"></i>
+                                <span class="text-xs font-semibold text-rosegold-100 block">MS Excel</span>
+                                <span class="text-[10px] text-rosegold-100/50">Advanced Analysis</span>
+                            </div>
+
+                            <div class="p-3 bg-burgundy-900/90 border border-rosegold-300/10 rounded-sm text-center">
+                                <i class="fa-solid fa-users-gear text-2xl text-rosegold-300 mb-2 block"></i>
+                                <span class="text-xs font-semibold text-rosegold-100 block">CRM Systems</span>
+                                <span class="text-[10px] text-rosegold-100/50">Tracking Lead/Sales</span>
+                            </div>
+                        </div>
+
+                        <!-- Data Sources Badges -->
+                        <div class="mt-6 pt-4 border-t border-rosegold-300/10">
+                            <span class="text-[11px] uppercase tracking-wider text-rosegold-300/80 font-semibold block mb-2">Khai thác Nguồn dữ liệu lớn:</span>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="px-2.5 py-1 bg-rosegold-300/10 border border-rosegold-300/20 text-[11px] text-rosegold-100 rounded-xs">World Bank Data</span>
+                                <span class="px-2.5 py-1 bg-rosegold-300/10 border border-rosegold-300/20 text-[11px] text-rosegold-100 rounded-xs">UN Comtrade</span>
+                                <span class="px-2.5 py-1 bg-rosegold-300/10 border border-rosegold-300/20 text-[11px] text-rosegold-100 rounded-xs">Trade Map</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Category 3: Leadership & Management -->
+                <div class="glass-card p-8 rounded-sm border border-rosegold-300/15 flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center gap-3 mb-6 pb-4 border-b border-rosegold-300/15">
+                            <span class="w-10 h-10 rounded-sm bg-rosegold-300/10 border border-rosegold-300/30 flex items-center justify-center text-rosegold-300">
+                                <i class="fa-solid fa-comments text-lg"></i>
+                            </span>
+                            <h3 class="font-serif text-2xl text-rosegold-100 font-medium">Lãnh đạo & Quản lý</h3>
+                        </div>
+
+                        <ul class="space-y-4">
+                            <li class="flex items-start gap-3">
+                                <i class="fa-solid fa-check text-rosegold-300 text-xs mt-1"></i>
+                                <div>
+                                    <h4 class="text-xs font-semibold text-rosegold-100">Trưởng nhóm Nghiên cứu (Team Leader)</h4>
+                                    <p class="text-[11px] text-rosegold-100/60 mt-0.5">Lập kế hoạch, phân công công việc, điều phối và đảm bảo tiến độ nghiên cứu.</p>
+                                </div>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <i class="fa-solid fa-check text-rosegold-300 text-xs mt-1"></i>
+                                <div>
+                                    <h4 class="text-xs font-semibold text-rosegold-100">Kỹ năng Thuyết trình Chuyên sâu</h4>
+                                    <p class="text-[11px] text-rosegold-100/60 mt-0.5">Trình bày hàm ý chính sách và kết quả nghiên cứu một cách mạch lạc, thuyết phục.</p>
+                                </div>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <i class="fa-solid fa-check text-rosegold-300 text-xs mt-1"></i>
+                                <div>
+                                    <h4 class="text-xs font-semibold text-rosegold-100">Quản lý Dự án Học thuật</h4>
+                                    <p class="text-[11px] text-rosegold-100/60 mt-0.5">Sắp xếp luồng công việc thu thập, làm sạch và kiểm định mô hình dữ liệu.</p>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Featured Research Projects Section (STAR Model) -->
+    <section id="projects" class="py-24 relative">
+        <div class="max-w-7xl mx-auto px-6 md:px-12">
+            
+            <div class="flex flex-col md:flex-row md:items-end justify-between mb-16">
+                <div>
+                    <span class="text-xs font-semibold uppercase tracking-widest text-rosegold-300 mb-2 block">// DỰ ÁN NGHIÊN CỨU TIÊU BIỂU</span>
+                    <h2 class="font-serif text-3xl sm:text-4xl md:text-5xl font-light text-rosegold-100">
+                        Case Studies <span class="italic text-gold-gradient">Mô hình STAR</span>
+                    </h2>
+                </div>
+                <p class="text-xs text-rosegold-100/60 max-w-md mt-4 md:mt-0 font-light">
+                    Các dự án nghiên cứu định lượng sử dụng mô hình Panel Data, dữ liệu vĩ mô quốc tế và các phương pháp kiểm định kinh tế lượng chuyên sâu.
+                </p>
+            </div>
+
+            <div class="space-y-8">
+                
+                <!-- Project 1 -->
+                <div class="glass-card p-8 rounded-sm border border-rosegold-300/20 relative group">
+                    <div class="flex flex-wrap items-center justify-between gap-4 mb-6 pb-4 border-b border-rosegold-300/15">
+                        <div>
+                            <span class="px-3 py-1 bg-rosegold-300/15 border border-rosegold-300/30 text-rosegold-300 text-[10px] font-semibold uppercase tracking-widest rounded-xs">Dự án 01 — Trưởng Nhóm</span>
+                            <h3 class="font-serif text-2xl sm:text-3xl text-rosegold-100 font-medium mt-2">
+                                Tác động của Độ mở Thương mại & Lạm phát lên Tăng trưởng Kinh tế
+                            </h3>
+                        </div>
+                        <div class="text-right">
+                            <span class="text-xs text-rosegold-300/80 font-mono">Năm thực hiện: 2026</span>
+                            <div class="flex gap-2 mt-2">
+                                <span class="px-2 py-0.5 bg-burgundy-900 border border-rosegold-300/20 text-[10px] text-rosegold-100">Stata</span>
+                                <span class="px-2 py-0.5 bg-burgundy-900 border border-rosegold-300/20 text-[10px] text-rosegold-100">Panel Data</span>
+                                <span class="px-2 py-0.5 bg-burgundy-900 border border-rosegold-300/20 text-[10px] text-rosegold-100">World Bank</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- STAR Breakdown Accordion / Grid -->
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                        
+                        <div class="p-4 bg-burgundy-900/60 rounded-sm border border-rosegold-300/10">
+                            <div class="flex items-center gap-2 mb-2 text-rosegold-300 text-xs font-semibold uppercase">
+                                <span class="w-5 h-5 rounded-full bg-rosegold-300/20 flex items-center justify-center text-[10px]">S</span>
+                                Situation (Bối cảnh)
+                            </div>
+                            <p class="text-xs text-rosegold-100/70 leading-relaxed">
+                                Đánh giá mối quan hệ đa chiều giữa độ mở thương mại, tỷ lệ lạm phát và tăng trưởng kinh tế vĩ mô tại các quốc gia trong giai đoạn 2010–2023.
+                            </p>
+                        </div>
+
+                        <div class="p-4 bg-burgundy-900/60 rounded-sm border border-rosegold-300/10">
+                            <div class="flex items-center gap-2 mb-2 text-rosegold-300 text-xs font-semibold uppercase">
+                                <span class="w-5 h-5 rounded-full bg-rosegold-300/20 flex items-center justify-center text-[10px]">T</span>
+                                Task (Nhiệm vụ)
+                            </div>
+                            <p class="text-xs text-rosegold-100/70 leading-relaxed">
+                                Đảm nhiệm vị trí Trưởng nhóm: Thu thập dữ liệu vĩ mô, xây dựng mô hình kinh tế lượng, phân công nhiệm vụ và quản lý tiến độ tổng thể.
+                            </p>
+                        </div>
+
+                        <div class="p-4 bg-burgundy-900/60 rounded-sm border border-rosegold-300/10">
+                            <div class="flex items-center gap-2 mb-2 text-rosegold-300 text-xs font-semibold uppercase">
+                                <span class="w-5 h-5 rounded-full bg-rosegold-300/20 flex items-center justify-center text-[10px]">A</span>
+                                Action (Hành động)
+                            </div>
+                            <p class="text-xs text-rosegold-100/70 leading-relaxed">
+                                Xử lý dữ liệu bảng (Panel Data) từ World Bank, UN Comtrade & Trade Map bằng Stata & Excel. Thực hiện kiểm định Hausman, FEM/REM để đánh giá độ tin cậy.
+                            </p>
+                        </div>
+
+                        <div class="p-4 bg-burgundy-900/60 rounded-sm border border-rosegold-300/10">
+                            <div class="flex items-center gap-2 mb-2 text-rosegold-300 text-xs font-semibold uppercase">
+                                <span class="w-5 h-5 rounded-full bg-rosegold-300/20 flex items-center justify-center text-[10px]">R</span>
+                                Result (Kết quả)
+                            </div>
+                            <p class="text-xs text-rosegold-100/70 leading-relaxed">
+                                Hoàn thành báo cáo nghiên cứu định lượng chuẩn mực, xác định rõ ngưỡng lạm phát tối ưu & tác động của thương mại đến từng nhóm nền kinh tế.
+                            </p>
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- Project 2 -->
+                <div class="glass-card p-8 rounded-sm border border-rosegold-300/20 relative group">
+                    <div class="flex flex-wrap items-center justify-between gap-4 mb-6 pb-4 border-b border-rosegold-300/15">
+                        <div>
+                            <span class="px-3 py-1 bg-rosegold-300/15 border border-rosegold-300/30 text-rosegold-300 text-[10px] font-semibold uppercase tracking-widest rounded-xs">Dự án 02 — Trưởng Nhóm</span>
+                            <h3 class="font-serif text-2xl sm:text-3xl text-rosegold-100 font-medium mt-2">
+                                Cách mạng Công nghệ 4.0 & Mức độ Tinh vi của Sản phẩm Xuất khẩu
+                            </h3>
+                        </div>
+                        <div class="text-right">
+                            <span class="text-xs text-rosegold-300/80 font-mono">Năm thực hiện: 2026</span>
+                            <div class="flex gap-2 mt-2">
+                                <span class="px-2 py-0.5 bg-burgundy-900 border border-rosegold-300/20 text-[10px] text-rosegold-100">Python</span>
+                                <span class="px-2 py-0.5 bg-burgundy-900 border border-rosegold-300/20 text-[10px] text-rosegold-100">Stata</span>
+                                <span class="px-2 py-0.5 bg-burgundy-900 border border-rosegold-300/20 text-[10px] text-rosegold-100">Complexity Index</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                        <div class="p-4 bg-burgundy-900/60 rounded-sm border border-rosegold-300/10">
+                            <div class="flex items-center gap-2 mb-2 text-rosegold-300 text-xs font-semibold uppercase">
+                                <span class="w-5 h-5 rounded-full bg-rosegold-300/20 flex items-center justify-center text-[10px]">S</span>
+                                Situation (Bối cảnh)
+                            </div>
+                            <p class="text-xs text-rosegold-100/70 leading-relaxed">
+                                Đo lường tác động của việc ứng dụng công nghệ 4.0 đến năng lực cạnh tranh và chỉ số tinh vi (Product Complexity) của chuỗi hàng hóa xuất khẩu.
+                            </p>
+                        </div>
+
+                        <div class="p-4 bg-burgundy-900/60 rounded-sm border border-rosegold-300/10">
+                            <div class="flex items-center gap-2 mb-2 text-rosegold-300 text-xs font-semibold uppercase">
+                                <span class="w-5 h-5 rounded-full bg-rosegold-300/20 flex items-center justify-center text-[10px]">T</span>
+                                Task (Nhiệm vụ)
+                            </div>
+                            <p class="text-xs text-rosegold-100/70 leading-relaxed">
+                                Điều phối toàn bộ nhóm nghiên cứu, thiết kế khung lý thuyết và phương pháp đo lường chỉ số công nghệ trong hoạt động xuất khẩu.
+                            </p>
+                        </div>
+
+                        <div class="p-4 bg-burgundy-900/60 rounded-sm border border-rosegold-300/10">
+                            <div class="flex items-center gap-2 mb-2 text-rosegold-300 text-xs font-semibold uppercase">
+                                <span class="w-5 h-5 rounded-full bg-rosegold-300/20 flex items-center justify-center text-[10px]">A</span>
+                                Action (Hành động)
+                            </div>
+                            <p class="text-xs text-rosegold-100/70 leading-relaxed">
+                                Kết hợp Python (Pandas) và Stata để làm sạch cấu trúc dữ liệu xuất nhập khẩu phức tạp, xây dựng mô hình hồi quy định lượng đánh giá năng lực xuất khẩu.
+                            </p>
+                        </div>
+
+                        <div class="p-4 bg-burgundy-900/60 rounded-sm border border-rosegold-300/10">
+                            <div class="flex items-center gap-2 mb-2 text-rosegold-300 text-xs font-semibold uppercase">
+                                <span class="w-5 h-5 rounded-full bg-rosegold-300/20 flex items-center justify-center text-[10px]">R</span>
+                                Result (Kết quả)
+                            </div>
+                            <p class="text-xs text-rosegold-100/70 leading-relaxed">
+                                Đưa ra đề xuất hàm ý chính sách thực tiễn về chuyển dịch cơ cấu xuất khẩu & giải pháp nâng cao năng lực cạnh tranh quốc gia.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 3 -->
+                <div class="glass-card p-8 rounded-sm border border-rosegold-300/20 relative group">
+                    <div class="flex flex-wrap items-center justify-between gap-4 mb-6 pb-4 border-b border-rosegold-300/15">
+                        <div>
+                            <span class="px-3 py-1 bg-rosegold-300/15 border border-rosegold-300/30 text-rosegold-300 text-[10px] font-semibold uppercase tracking-widest rounded-xs">Dự án 03 — Thành Viên Nghiên Cứu</span>
+                            <h3 class="font-serif text-2xl sm:text-3xl text-rosegold-100 font-medium mt-2">
+                                Kiểm định Đường cong Kuznets Môi trường (EKC)
+                            </h3>
+                        </div>
+                        <div class="text-right">
+                            <span class="text-xs text-rosegold-300/80 font-mono">Năm thực hiện: 2026</span>
+                            <div class="flex gap-2 mt-2">
+                                <span class="px-2 py-0.5 bg-burgundy-900 border border-rosegold-300/20 text-[10px] text-rosegold-100">Excel</span>
+                                <span class="px-2 py-0.5 bg-burgundy-900 border border-rosegold-300/20 text-[10px] text-rosegold-100">Stata</span>
+                                <span class="px-2 py-0.5 bg-burgundy-900 border border-rosegold-300/20 text-[10px] text-rosegold-100">EKC Model</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                        <div class="p-4 bg-burgundy-900/60 rounded-sm border border-rosegold-300/10">
+                            <div class="flex items-center gap-2 mb-2 text-rosegold-300 text-xs font-semibold uppercase">
+                                <span class="w-5 h-5 rounded-full bg-rosegold-300/20 flex items-center justify-center text-[10px]">S</span>
+                                Situation (Bối cảnh)
+                            </div>
+                            <p class="text-xs text-rosegold-100/70 leading-relaxed">
+                                Kiểm định mối quan hệ phi tuyến giữa tăng trưởng thu nhập bình quân đầu người và mức độ ô nhiễm môi trường.
+                            </p>
+                        </div>
+
+                        <div class="p-4 bg-burgundy-900/60 rounded-sm border border-rosegold-300/10">
+                            <div class="flex items-center gap-2 mb-2 text-rosegold-300 text-xs font-semibold uppercase">
+                                <span class="w-5 h-5 rounded-full bg-rosegold-300/20 flex items-center justify-center text-[10px]">T</span>
+                                Task (Nhiệm vụ)
+                            </div>
+                            <p class="text-xs text-rosegold-100/70 leading-relaxed">
+                                Phụ trách thu thập, làm sạch chuỗi dữ liệu kinh tế - môi trường và hỗ trợ xây dựng mô hình định lượng.
+                            </p>
+                        </div>
+
+                        <div class="p-4 bg-burgundy-900/60 rounded-sm border border-rosegold-300/10">
+                            <div class="flex items-center gap-2 mb-2 text-rosegold-300 text-xs font-semibold uppercase">
+                                <span class="w-5 h-5 rounded-full bg-rosegold-300/20 flex items-center justify-center text-[10px]">A</span>
+                                Action (Hành động)
+                            </div>
+                            <p class="text-xs text-rosegold-100/70 leading-relaxed">
+                                Sử dụng Stata để chạy phương trình bậc hai phi tuyến, xác định điểm ngoặt (turning point) của giả thuyết Đường cong EKC.
+                            </p>
+                        </div>
+
+                        <div class="p-4 bg-burgundy-900/60 rounded-sm border border-rosegold-300/10">
+                            <div class="flex items-center gap-2 mb-2 text-rosegold-300 text-xs font-semibold uppercase">
+                                <span class="w-5 h-5 rounded-full bg-rosegold-300/20 flex items-center justify-center text-[10px]">R</span>
+                                Result (Kết quả)
+                            </div>
+                            <p class="text-xs text-rosegold-100/70 leading-relaxed">
+                                Xác nhận sự tồn tại của dạng đường cong U-ngược đối với mức ô nhiễm trong giai đoạn phát triển kinh tế nhất định.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Experience & Diplomatic Activities Gallery -->
+    <section id="experience" class="py-24 bg-burgundy-950 border-t border-b border-rosegold-300/10 relative">
+        <div class="max-w-7xl mx-auto px-6 md:px-12">
+            
+            <!-- Work Experience Timeline -->
+            <div class="mb-20">
+                <div class="text-center max-w-3xl mx-auto mb-16">
+                    <span class="text-xs font-semibold uppercase tracking-widest text-rosegold-300 mb-2 block">// KINH NGHIỆM THỰC TẾ</span>
+                    <h2 class="font-serif text-3xl sm:text-4xl md:text-5xl font-light text-rosegold-100">
+                        Kinh nghiệm Làm việc <span class="italic text-gold-gradient">& Thực tiễn</span>
+                    </h2>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    
+                    <!-- Exp 1: Edutalk -->
+                    <div class="glass-card p-8 rounded-sm border border-rosegold-300/20 relative">
+                        <div class="flex justify-between items-start mb-4">
+                            <div>
+                                <span class="text-xs font-mono text-rosegold-300">2025 – 2026 (Part-time)</span>
+                                <h3 class="font-serif text-2xl text-rosegold-100 font-medium mt-1">Education Sales Intern</h3>
+                                <p class="text-xs text-rosegold-100/60">Công ty Cổ phần Edutalk</p>
+                            </div>
+                            <span class="w-10 h-10 rounded-full bg-rosegold-300/10 flex items-center justify-center text-rosegold-300">
+                                <i class="fa-solid fa-briefcase"></i>
+                            </span>
+                        </div>
+                        <ul class="space-y-2 text-xs text-rosegold-100/70 leading-relaxed">
+                            <li class="flex items-start gap-2">
+                                <i class="fa-solid fa-angle-right text-rosegold-300 text-[10px] mt-1"></i>
+                                <span><strong>Khai thác Data Khách hàng:</strong> Chủ động tiếp cận khách hàng tiềm năng qua hệ thống Online (Facebook, Zalo).</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <i class="fa-solid fa-angle-right text-rosegold-300 text-[10px] mt-1"></i>
+                                <span><strong>Tư vấn Lộ trình:</strong> Giới thiệu chương trình học, học phí, giải đáp thắc mắc và hỗ trợ đăng ký khóa học.</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <i class="fa-solid fa-angle-right text-rosegold-300 text-[10px] mt-1"></i>
+                                <span><strong>Quản lý CRM & Conversion Rate:</strong> Theo dõi trạng thái tư vấn trên Excel/CRM, phân tích tỷ lệ chuyển đổi nhằm tối ưu hiệu quả.</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- Exp 2: English Tutor -->
+                    <div class="glass-card p-8 rounded-sm border border-rosegold-300/20 relative">
+                        <div class="flex justify-between items-start mb-4">
+                            <div>
+                                <span class="text-xs font-mono text-rosegold-300">2025 – Nay</span>
+                                <h3 class="font-serif text-2xl text-rosegold-100 font-medium mt-1">Gia sư Tiếng Anh Độc lập</h3>
+                                <p class="text-xs text-rosegold-100/60">Dạy kèm cá nhân Học sinh Trung học</p>
+                            </div>
+                            <span class="w-10 h-10 rounded-full bg-rosegold-300/10 flex items-center justify-center text-rosegold-300">
+                                <i class="fa-solid fa-graduation-cap"></i>
+                            </span>
+                        </div>
+                        <ul class="space-y-2 text-xs text-rosegold-100/70 leading-relaxed">
+                            <li class="flex items-start gap-2">
+                                <i class="fa-solid fa-angle-right text-rosegold-300 text-[10px] mt-1"></i>
+                                <span><strong>Học sinh Công lập & Quốc tế:</strong> Dạy kèm cá nhân nâng cao kỹ năng Đọc và Viết tiếng Anh chuyên sâu.</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <i class="fa-solid fa-angle-right text-rosegold-300 text-[10px] mt-1"></i>
+                                <span><strong>Thiết kế Lộ trình:</strong> Xây dựng kế hoạch học tập cá nhân hóa phù hợp với phong cách tiếp thu của từng học sinh.</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <i class="fa-solid fa-angle-right text-rosegold-300 text-[10px] mt-1"></i>
+                                <span><strong>Luyện thi Lớp 10:</strong> Ôn thi chuyển cấp đạt kết quả điểm cao cho học sinh khối 9.</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- Diplomatic & School Activities Photo Gallery -->
+            <div id="activities" class="pt-8">
+                <div class="flex flex-col md:flex-row md:items-end justify-between mb-12">
+                    <div>
+                        <span class="text-xs font-semibold uppercase tracking-widest text-rosegold-300 mb-2 block">// HOẠT ĐỘNG NGOẠI GIAO & SỰ KIỆN FTU</span>
+                        <h2 class="font-serif text-3xl sm:text-4xl font-light text-rosegold-100">
+                            Hình ảnh Hoạt động <span class="italic text-gold-gradient">Nổi bật</span>
+                        </h2>
+                    </div>
+                    <p class="text-xs text-rosegold-100/60 max-w-md mt-2 md:mt-0 font-light">
+                        Thành viên đoàn sinh viên đón tiếp lãnh đạo quốc tế và đại biểu sự kiện trọng đại của Đại học Ngoại thương.
+                    </p>
+                </div>
+
+                <!-- 3 Photo Grid -->
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    
+                    <!-- Photo 1 -->
+                    <div class="glass-card p-4 rounded-sm border border-rosegold-300/20 group cursor-pointer" onclick="openLightbox('1.jpg', 'Lễ tân Chương trình Kỷ niệm 65 năm FTU (11/2025)')">
+                        <div class="relative aspect-[3/4] overflow-hidden rounded-sm mb-3">
+                            <img src="1.jpg" alt="Lễ tân FTU 65 năm" class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700 filter brightness-95" onerror="this.onerror=null; this.src='https://placehold.co/600x800/180f14/e0b589?text=Le+Tan+FTU+65+Nam';">
+                            <div class="absolute inset-0 bg-burgundy-950/30 group-hover:bg-transparent transition-colors"></div>
+                            <span class="absolute top-3 right-3 w-8 h-8 rounded-full glass-card flex items-center justify-center text-rosegold-300 opacity-0 group-hover:opacity-100 transition-opacity">
+                                <i class="fa-solid fa-expand text-xs"></i>
+                            </span>
+                        </div>
+                        <div class="px-1">
+                            <span class="text-[10px] text-rosegold-300 font-mono block">Tháng 11/2025</span>
+                            <h4 class="font-serif text-lg text-rosegold-100 font-medium">Lễ tân Kỷ niệm 65 năm FTU</h4>
+                            <p class="text-[11px] text-rosegold-100/60 mt-1">Đội lễ tân chính thức chương trình "Khát vọng Ngoại thương".</p>
+                        </div>
+                    </div>
+
+                    <!-- Photo 2 -->
+                    <div class="glass-card p-4 rounded-sm border border-rosegold-300/20 group cursor-pointer" onclick="openLightbox('2.jpg', 'Đoàn sinh viên Đón tiếp Thủ tướng Thái Lan (04/2025)')">
+                        <div class="relative aspect-[3/4] overflow-hidden rounded-sm mb-3">
+                            <img src="2.jpg" alt="Đón tiếp Thủ tướng Thái Lan" class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700 filter brightness-95" onerror="this.onerror=null; this.src='https://placehold.co/600x800/180f14/e0b589?text=Don+Thu+Tuong+Thai+Lan';">
+                            <div class="absolute inset-0 bg-burgundy-950/30 group-hover:bg-transparent transition-colors"></div>
+                            <span class="absolute top-3 right-3 w-8 h-8 rounded-full glass-card flex items-center justify-center text-rosegold-300 opacity-0 group-hover:opacity-100 transition-opacity">
+                                <i class="fa-solid fa-expand text-xs"></i>
+                            </span>
+                        </div>
+                        <div class="px-1">
+                            <span class="text-[10px] text-rosegold-300 font-mono block">Tháng 04/2025</span>
+                            <h4 class="font-serif text-lg text-rosegold-100 font-medium">Đón tiếp Thủ tướng Thái Lan</h4>
+                            <p class="text-[11px] text-rosegold-100/60 mt-1">Tham gia đoàn lễ tân sinh viên đại diện trường trong sự kiện đối ngoại.</p>
+                        </div>
+                    </div>
+
+                    <!-- Photo 3 -->
+                    <div class="glass-card p-4 rounded-sm border border-rosegold-300/20 group cursor-pointer" onclick="openLightbox('3.jpg', 'Đội ngũ Lễ tân Ngoại giao Áo dài Sinh viên FTU')">
+                        <div class="relative aspect-[3/4] overflow-hidden rounded-sm mb-3">
+                            <img src="3.jpg" alt="Đội ngũ Áo dài Ngoại giao" class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700 filter brightness-95" onerror="this.onerror=null; this.src='https://placehold.co/600x800/180f14/e0b589?text=Doi+Ngu+Ao+Dai+FTU';">
+                            <div class="absolute inset-0 bg-burgundy-950/30 group-hover:bg-transparent transition-colors"></div>
+                            <span class="absolute top-3 right-3 w-8 h-8 rounded-full glass-card flex items-center justify-center text-rosegold-300 opacity-0 group-hover:opacity-100 transition-opacity">
+                                <i class="fa-solid fa-expand text-xs"></i>
+                            </span>
+                        </div>
+                        <div class="px-1">
+                            <span class="text-[10px] text-rosegold-300 font-mono block">2025 – Nay</span>
+                            <h4 class="font-serif text-lg text-rosegold-100 font-medium">Đội ngũ Ngoại giao Sinh viên</h4>
+                            <p class="text-[11px] text-rosegold-100/60 mt-1">Phối hợp cùng đoàn đại biểu cấp cao trong các sự kiện quốc tế.</p>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Contact Section & Footer -->
+    <section id="contact" class="py-24 relative overflow-hidden">
+        <!-- Decorative Glow -->
+        <div class="absolute bottom-0 left-1/2 -translate-x-1/2 w-full max-w-5xl h-96 bg-rosegold-500/5 blur-3xl pointer-events-none"></div>
+
+        <div class="max-w-7xl mx-auto px-6 md:px-12 relative z-10">
+            
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
+                
+                <!-- Contact Info & Quick Copy -->
+                <div class="lg:col-span-5 flex flex-col justify-between space-y-8">
+                    <div>
+                        <span class="text-xs font-semibold uppercase tracking-widest text-rosegold-300 mb-2 block">// KẾT NỐI VỚI TÔI</span>
+                        <h2 class="font-serif text-3xl sm:text-4xl md:text-5xl font-light text-rosegold-100">
+                            Hãy cùng thảo luận <br><span class="italic text-gold-gradient">Về Dự án Mới</span>
+                        </h2>
+                        <p class="text-xs sm:text-sm text-rosegold-100/60 mt-4 leading-relaxed font-light">
+                            Tôi luôn sẵn sàng trao đổi về các cơ hội hợp tác phân tích dữ liệu, nghiên cứu kinh tế vĩ mô hoặc các vị trí thực tập / công việc chuyên môn.
+                        </p>
+                    </div>
+
+                    <div class="space-y-4">
+                        <!-- Email Box -->
+                        <div class="glass-card p-4 rounded-sm border border-rosegold-300/15 flex items-center justify-between">
+                            <div class="flex items-center gap-3">
+                                <span class="w-10 h-10 rounded-full bg-rosegold-300/10 flex items-center justify-center text-rosegold-300 text-sm">
+                                    <i class="fa-regular fa-envelope"></i>
+                                </span>
+                                <div>
+                                    <span class="text-[10px] uppercase text-rosegold-100/50 tracking-wider block">Email</span>
+                                    <span class="text-xs font-medium text-rosegold-100 select-all">ngocvuthp2006@gmail.com</span>
+                                </div>
+                            </div>
+                            <button onclick="copyToClipboard('ngocvuthp2006@gmail.com', 'Email')" class="px-3 py-1.5 bg-rosegold-300/15 hover:bg-rosegold-300 text-rosegold-300 hover:text-burgundy-950 text-[11px] font-semibold rounded-xs transition-colors">
+                                <i class="fa-regular fa-copy mr-1"></i> Copy
+                            </button>
+                        </div>
+
+                        <!-- Phone Box -->
+                        <div class="glass-card p-4 rounded-sm border border-rosegold-300/15 flex items-center justify-between">
+                            <div class="flex items-center gap-3">
+                                <span class="w-10 h-10 rounded-full bg-rosegold-300/10 flex items-center justify-center text-rosegold-300 text-sm">
+                                    <i class="fa-solid fa-phone"></i>
+                                </span>
+                                <div>
+                                    <span class="text-[10px] uppercase text-rosegold-100/50 tracking-wider block">Điện thoại</span>
+                                    <span class="text-xs font-medium text-rosegold-100 select-all">0325 756 458</span>
+                                </div>
+                            </div>
+                            <button onclick="copyToClipboard('0325756458', 'Số điện thoại')" class="px-3 py-1.5 bg-rosegold-300/15 hover:bg-rosegold-300 text-rosegold-300 hover:text-burgundy-950 text-[11px] font-semibold rounded-xs transition-colors">
+                                <i class="fa-regular fa-copy mr-1"></i> Copy
+                            </button>
+                        </div>
+
+                        <!-- Address Box -->
+                        <div class="glass-card p-4 rounded-sm border border-rosegold-300/15 flex items-center gap-3">
+                            <span class="w-10 h-10 rounded-full bg-rosegold-300/10 flex items-center justify-center text-rosegold-300 text-sm">
+                                <i class="fa-solid fa-location-dot"></i>
+                            </span>
+                            <div>
+                                <span class="text-[10px] uppercase text-rosegold-100/50 tracking-wider block">Địa chỉ</span>
+                                <span class="text-xs font-medium text-rosegold-100">Phường Láng, Quận Đống Đa, Hà Nội</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Contact Form -->
+                <div class="lg:col-span-7">
+                    <div class="glass-card p-8 rounded-sm border border-rosegold-300/20">
+                        <h3 class="font-serif text-2xl text-rosegold-100 font-medium mb-6">Gửi tin nhắn trực tiếp</h3>
+                        
+                        <form id="contact-form" onsubmit="handleFormSubmit(event)" class="space-y-4">
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                                <div class="space-y-1">
+                                    <label class="text-[11px] uppercase tracking-wider text-rosegold-100/70 font-medium">Họ và Tên</label>
+                                    <input type="text" required placeholder="Nguyễn Văn A" class="w-full px-4 py-3 bg-burgundy-900/80 border border-rosegold-300/20 rounded-xs text-xs text-rosegold-100 focus:outline-none focus:border-rosegold-300 transition-colors">
+                                </div>
+                                <div class="space-y-1">
+                                    <label class="text-[11px] uppercase tracking-wider text-rosegold-100/70 font-medium">Email liên hệ</label>
+                                    <input type="email" required placeholder="your.email@example.com" class="w-full px-4 py-3 bg-burgundy-900/80 border border-rosegold-300/20 rounded-xs text-xs text-rosegold-100 focus:outline-none focus:border-rosegold-300 transition-colors">
+                                </div>
+                            </div>
+
+                            <div class="space-y-1">
+                                <label class="text-[11px] uppercase tracking-wider text-rosegold-100/70 font-medium">Tiêu đề</label>
+                                <input type="text" required placeholder="Trao đổi cơ hội công việc / Dự án" class="w-full px-4 py-3 bg-burgundy-900/80 border border-rosegold-300/20 rounded-xs text-xs text-rosegold-100 focus:outline-none focus:border-rosegold-300 transition-colors">
+                            </div>
+
+                            <div class="space-y-1">
+                                <label class="text-[11px] uppercase tracking-wider text-rosegold-100/70 font-medium">Nội dung tin nhắn</label>
+                                <textarea rows="4" required placeholder="Mô tả công việc hoặc yêu cầu trao đổi của bạn..." class="w-full px-4 py-3 bg-burgundy-900/80 border border-rosegold-300/20 rounded-xs text-xs text-rosegold-100 focus:outline-none focus:border-rosegold-300 transition-colors resize-none"></textarea>
+                            </div>
+
+                            <button type="submit" class="w-full py-3.5 text-xs font-semibold uppercase tracking-widest text-burgundy-950 bg-gradient-to-r from-rosegold-300 via-rosegold-400 to-rosegold-500 rounded-xs hover:shadow-[0_0_20px_rgba(224,181,137,0.4)] transition-all">
+                                Gửi Tin Nhắn
+                            </button>
+                        </form>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Footer Bottom -->
+            <div class="mt-20 pt-8 border-t border-rosegold-300/15 flex flex-col sm:flex-row items-center justify-between text-xs text-rosegold-100/50 gap-4">
+                <p>© 2026 Vũ Kim Ngọc. All rights reserved. Foreign Trade University.</p>
+                <div class="flex items-center space-x-6">
+                    <a href="#navbar" class="hover:text-rosegold-300 transition-colors flex items-center gap-1">
+                        <span>Lên đầu trang</span>
+                        <i class="fa-solid fa-arrow-up text-[10px]"></i>
+                    </a>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Custom Image Lightbox Modal -->
+    <div id="lightbox" class="fixed inset-0 z-50 bg-burgundy-950/95 backdrop-blur-xl flex items-center justify-center p-4 opacity-0 pointer-events-none transition-opacity duration-300">
+        <button onclick="closeLightbox()" class="absolute top-6 right-6 text-rosegold-300 text-2xl hover:text-rosegold-100 transition-colors p-2 focus:outline-none">
+            <i class="fa-solid fa-xmark"></i>
+        </button>
+        <div class="max-w-4xl w-full flex flex-col items-center">
+            <img id="lightbox-img" src="" alt="" class="max-h-[80vh] w-auto object-contain rounded-sm border border-rosegold-300/30 shadow-2xl">
+            <p id="lightbox-caption" class="text-xs font-serif text-rosegold-200 mt-4 tracking-wide text-center"></p>
+        </div>
+    </div>
+
+    <!-- Notification Toast Box -->
+    <div id="toast" class="fixed bottom-6 right-6 z-50 glass-card border border-rosegold-300/40 px-5 py-3 rounded-sm text-xs font-medium text-rosegold-100 flex items-center gap-3 transform translate-y-20 opacity-0 transition-all duration-300 shadow-2xl">
+        <i class="fa-solid fa-circle-check text-rosegold-300 text-base"></i>
+        <span id="toast-message">Đã sao chép!</span>
+    </div>
+
+    <!-- Client Scripts -->
+    <script>
+        // Sticky Header scroll effect
+        window.addEventListener('scroll', () => {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('bg-burgundy-950/85', 'backdrop-blur-md', 'border-rosegold-300/15', 'py-3');
+                navbar.classList.remove('py-5', 'border-transparent');
+            } else {
+                navbar.classList.remove('bg-burgundy-950/85', 'backdrop-blur-md', 'border-rosegold-300/15', 'py-3');
+                navbar.classList.add('py-5', 'border-transparent');
+            }
+        });
+
+        // Mobile Menu Toggle
+        const mobileBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        mobileBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Close mobile menu on click link
+        document.querySelectorAll('#mobile-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+
+        // Clipboard Copy Functionality using execCommand fallback for iFrame compatibility
+        function copyToClipboard(text, label) {
+            const tempInput = document.createElement('textarea');
+            tempInput.value = text;
+            document.body.appendChild(tempInput);
+            tempInput.select();
+            document.execCommand('copy');
+            document.body.removeChild(tempInput);
+
+            showToast(`Đã sao chép ${label}: ${text}`);
+        }
+
+        // Show Custom Toast
+        function showToast(message) {
+            const toast = document.getElementById('toast');
+            const toastMsg = document.getElementById('toast-message');
+            toastMsg.innerText = message;
+            toast.classList.remove('translate-y-20', 'opacity-0');
+            
+            setTimeout(() => {
+                toast.classList.add('translate-y-20', 'opacity-0');
+            }, 3000);
+        }
+
+        // Lightbox Modal Functions
+        function openLightbox(imgSrc, caption) {
+            const lightbox = document.getElementById('lightbox');
+            const lightboxImg = document.getElementById('lightbox-img');
+            const lightboxCaption = document.getElementById('lightbox-caption');
+
+            lightboxImg.src = imgSrc;
+            lightboxCaption.innerText = caption;
+
+            lightbox.classList.remove('opacity-0', 'pointer-events-none');
+        }
+
+        function closeLightbox() {
+            const lightbox = document.getElementById('lightbox');
+            lightbox.classList.add('opacity-0', 'pointer-events-none');
+        }
+
+        // Form Submit Simulation
+        function handleFormSubmit(e) {
+            e.preventDefault();
+            showToast('Cảm ơn bạn! Tin nhắn của bạn đã được gửi thành công.');
+            e.target.reset();
+        }
+    </script>
+</body>
+</html>
